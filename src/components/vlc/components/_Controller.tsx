@@ -68,7 +68,7 @@ function Controller({
               }
         }
       >
-        {status.state === 'playing' ? <Play className="play" /> : <Square className="stop" />}
+        {status.state === 'playing' ? <Square className="stop" /> : <Play className="play" />}
       </Button>
 
       <Button
