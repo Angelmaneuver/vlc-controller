@@ -1,4 +1,5 @@
 import { Suspense, use, useState } from 'react';
+import type { FallbackProps } from 'react-error-boundary';
 import { ErrorBoundary } from 'react-error-boundary';
 
 import { Spinner } from '@/components/ui/spinner';
@@ -11,7 +12,7 @@ import Window from './_Window';
 
 function VlcController() {
   return (
-    <ErrorBoundary>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Suspense
         fallback={
           <div className="loading">
@@ -38,9 +39,18 @@ function Wrapper({ initial }: { initial: Promise<Data> }) {
   }
 
   return (
-    <Window initial={data} reload={reload}>
+    <Window reload={reload}>
       <Controller channels={channels} status={status} reload={reload} />
     </Window>
+  );
+}
+
+function ErrorFallback({ error }: FallbackProps) {
+  return (
+    <div role="alert">
+      <p>エラーが発生しました:</p>
+      {error instanceof Error ? <pre style={{ color: 'red' }}>{error.message}</pre> : ''}
+    </div>
   );
 }
 

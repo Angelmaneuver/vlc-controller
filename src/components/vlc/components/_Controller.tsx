@@ -63,7 +63,7 @@ function Controller({
                 reload();
               }
             : async () => {
-                await select(current.id);
+                await select(current!.id);
                 reload();
               }
         }

@@ -1,11 +1,11 @@
-import { get } from "./abc";
+import type { Channel } from '../Interface';
 
-import type { Channel } from "../Interface";
+import { get } from './abc';
 
 async function channel(): Promise<Array<Channel>> {
-  const [data, error] = await get<Array<Channel>>("channel");
+  const [data, error] = await get<Array<Channel>>('channel');
 
-  if (error) {
+  if (typeof error === 'string') {
     throw new Error(error);
   }
 
