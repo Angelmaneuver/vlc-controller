@@ -1,7 +1,5 @@
-# Tauri + React + Typescript
+# VCL Controller
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+Control VLC running on a remote machine (e.g. Raspberry pi) via HTTP request. This Tauri app like a widget allows you to control VLC on a remote machine from your desktop.
 
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+![screenshot](./screenshot.png)
