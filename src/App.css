@@ -1,0 +1,90 @@
+body {
+  font-size: small;
+  background: rgba(0, 0, 0, 0);
+  overflow: hidden;
+}
+
+div.loading {
+  display: flex;
+  height: 39.59px;
+  width: 420px;
+  align-items: center;
+  justify-items: center;
+}
+
+div.loading > * {
+  flex-grow: 1;
+  text-align: center;
+}
+
+section.window {
+  display: flex;
+  height: 39.59px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+section.window > div.title {
+  flex-grow: 1;
+  text-align: center;
+  padding: 0.3em;
+  margin: 0.3em;
+  border-radius: 0.2em;
+  color: rgba(230, 230, 230, 0.8);
+  text-shadow: 0 0 0.5em #00bfff;
+  background: rgba(51, 49, 50, 0.9);
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+section.window > div.title:active {
+  cursor: grabbing;
+}
+
+section.window > div.main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+  text-align: center;
+  padding: 0.3em;
+  margin: 0.3em;
+  border-radius: 0.2em;
+  color: rgba(230, 230, 230, 0.8);
+  text-shadow: 0 0 0.5em #00bfff;
+  background: rgba(51, 49, 50, 0.9);
+}
+
+section.window .button {
+  padding: 0.3em;
+  margin: 0.3em;
+  border-radius: 0.2em;
+  background: transparent;
+  user-select: auto;
+  -webkit-user-select: none;
+  cursor: pointer;
+}
+
+section.window > .button {
+  color: rgba(230, 230, 230, 0.8);
+  background: rgba(51, 49, 50, 0.9);
+}
+
+section.window .button:has(.play) {
+  color: rgba(127, 255, 212, 0.8);
+}
+
+section.window .button:has(.stop) {
+  color: rgba(220, 20, 60, 0.8);
+}
+
+section.window .button svg {
+  filter: drop-shadow(0 0 0.5em);
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+section.window > .button svg {
+  filter: drop-shadow(0 0 0.5em #00bfff);
+}
