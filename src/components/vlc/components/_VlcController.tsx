@@ -1,4 +1,4 @@
-import { Suspense, use, useState } from 'react';
+import { CSSProperties, Suspense, use, useState } from 'react';
 import type { FallbackProps } from 'react-error-boundary';
 import { ErrorBoundary } from 'react-error-boundary';
 
@@ -45,13 +45,53 @@ function Wrapper({ initial }: { initial: Promise<Data> }) {
   );
 }
 
-function ErrorFallback({ error }: FallbackProps) {
+function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
-    <div role="alert">
-      <p>エラーが発生しました:</p>
-      {error instanceof Error ? <pre style={{ color: 'red' }}>{error.message}</pre> : ''}
+    <Window reload={resetErrorBoundary}>
+      <div className="main">
+        <LED style={{ width: '28.9em' }} text={`エラーが発生しました:${toString(error)}`} />
+      </div>
+    </Window>
+  );
+}
+
+function toString(error: unknown): string {
+  if (typeof error === 'string') {
+    return (error as string).trim();
+  } else if (error instanceof Error) {
+    return error.message;
+  } else {
+    return '不明なエラー';
+  }
+}
+
+function LED({
+  className = '',
+  style = undefined,
+  marquee = true,
+  text = '',
+}: {
+  className?: string;
+  style?: CSSProperties;
+  marquee?: boolean;
+  text?: string;
+}) {
+  return (
+    <div className={`led ${marquee ? 'marquee' : ''} ${className || ''}`.trim()} style={style}>
+      {text.length > 0 ? (
+        <span style={marquee ? { animationDuration: `${text.length}s` } : undefined}>{text}</span>
+      ) : (
+        ''
+      )}
     </div>
   );
 }
+
+LED.defaultProps = {
+  className: '',
+  style: undefined,
+  marquee: true,
+  text: '',
+};
 
 export default VlcController;
