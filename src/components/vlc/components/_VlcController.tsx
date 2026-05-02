@@ -47,7 +47,11 @@ function Wrapper({ initial }: { initial: Promise<Data> }) {
 
 function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
   return (
-    <Window reload={resetErrorBoundary}>
+    <Window
+      reload={async () => {
+        resetErrorBoundary();
+      }}
+    >
       <div className="main">
         <LED style={{ width: '28.9em' }} text={`エラーが発生しました:${toString(error)}`} />
       </div>
