@@ -11,8 +11,10 @@ import Controller from './_Controller';
 import Window from './_Window';
 
 function VlcController() {
+  const [initial, setInitial] = useState(vlc());
+
   return (
-    <ErrorBoundary FallbackComponent={ErrorFallback}>
+    <ErrorBoundary FallbackComponent={ErrorFallback} onReset={() => setInitial(vlc())}>
       <Suspense
         fallback={
           <div className="loading">
@@ -20,7 +22,7 @@ function VlcController() {
           </div>
         }
       >
-        <Wrapper initial={vlc()} />
+        <Wrapper initial={initial} />
       </Suspense>
     </ErrorBoundary>
   );
