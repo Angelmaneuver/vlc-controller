@@ -33,6 +33,17 @@ function Wrapper({ initial }: { initial: Promise<Data> }) {
 
   const [channels, setChannels] = useState(data.channels);
   const [status, setStatus] = useState(data.status);
+  const [isMute, setIsMute] = useState(false);
+  const [volume, setVolume] = useState(data.status.volume);
+
+  function onPreMute(volume: number) {
+    setIsMute(true);
+    setVolume(volume);
+  }
+
+  function onPreMuteCancel() {
+    setIsMute(false);
+  }
 
   async function reload() {
     const data = await vlc();
@@ -42,7 +53,17 @@ function Wrapper({ initial }: { initial: Promise<Data> }) {
 
   return (
     <Window reload={reload}>
-      <Controller channels={channels} status={status} reload={reload} />
+      <Controller
+        channels={channels}
+        status={status}
+        mute={{
+          isMute: isMute,
+          volume: volume,
+          onPreMute: onPreMute,
+          onPreMuteCancel: onPreMuteCancel,
+        }}
+        reload={reload}
+      />
     </Window>
   );
 }

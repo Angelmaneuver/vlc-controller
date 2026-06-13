@@ -58,6 +58,7 @@ pub fn run() {
         .plugin(tauri_plugin_window_state::Builder::new().build())
         .invoke_handler(tauri::generate_handler![
             window::change_by_combobox,
+            window::change_by_volume_window,
             window::exit,
             vlc::channel,
             vlc::status,

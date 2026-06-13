@@ -89,6 +89,12 @@ section.window > .button svg {
   filter: drop-shadow(0 0 0.5em #00bfff);
 }
 
+.volume {
+  color: rgba(230, 230, 230, 0.8);
+  filter: drop-shadow(0 0 0.5em rgba(230, 230, 230, 0.8));
+  background: rgba(51, 49, 50, 0.9);
+}
+
 .led {
   position: relative;
   overflow: hidden;
