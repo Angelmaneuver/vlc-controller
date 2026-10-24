@@ -37,8 +37,8 @@ function Wrapper({ initial }: { initial: Promise<Data> }) {
   const [isMute, setIsMute] = useState(false);
   const [volume, setVolume] = useState(data.status.volume);
 
-  function getKey(): Date {
-    return new Date();
+  function getKey(): string {
+    return new Date().toISOString();
   }
 
   function onPreMute(volume: number) {
