@@ -1,6 +1,6 @@
 [package]
 name = "vlc-controller"
-version = "0.1.0"
+version = "0.1.1"
 description = "Control VLC running on a remote machine (e.g. Raspberry pi) via HTTP request. This widget allows you to control VLC on a remote machine from your desktop."
 authors = ["Angelmaneuver"]
 edition = "2021"

@@ -31,10 +31,15 @@ function VlcController() {
 function Wrapper({ initial }: { initial: Promise<Data> }) {
   const data = use(initial);
 
+  const [key, setKey] = useState(getKey());
   const [channels, setChannels] = useState(data.channels);
   const [status, setStatus] = useState(data.status);
   const [isMute, setIsMute] = useState(false);
   const [volume, setVolume] = useState(data.status.volume);
+
+  function getKey(): Date {
+    return new Date();
+  }
 
   function onPreMute(volume: number) {
     setIsMute(true);
@@ -47,6 +52,7 @@ function Wrapper({ initial }: { initial: Promise<Data> }) {
 
   async function reload() {
     const data = await vlc();
+    setKey(getKey());
     setChannels(data.channels);
     setStatus(data.status);
   }
@@ -54,6 +60,7 @@ function Wrapper({ initial }: { initial: Promise<Data> }) {
   return (
     <Window reload={reload}>
       <Controller
+        key={key}
         channels={channels}
         status={status}
         mute={{
