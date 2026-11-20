@@ -80,6 +80,16 @@ pub fn change_by_volume_window(app: AppHandle, expand: bool) -> () {
 }
 
 #[tauri::command]
+pub fn reset_window(app: AppHandle) -> () {
+    let window = get_main_window(app.clone());
+    let width: Option<f64> = Some(420.);
+    let height: Option<f64> = Some(39.59);
+
+    set_window_size(&window, width, height);
+    set_available_size(&window, width, width, height, height);
+}
+
+#[tauri::command]
 pub fn exit(app: AppHandle) {
     #[cfg(target_os = "macos")]
     {
